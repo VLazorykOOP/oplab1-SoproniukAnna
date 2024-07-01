@@ -13,7 +13,7 @@ namespace Task5
 	string file2 = "dat2.dat";
 	string file3 = "dat3.dat";
 
-	namespace exception
+	namespace Myexception
 	{
 		class ErrorRangeX
 		{
@@ -98,7 +98,7 @@ namespace Task5
 			fstream fs1(file1);
 			double r = 0;
 			if (x < -5 || x > 5)
-				throw exception::ErrorRangeX(x);
+				throw Myexception::ErrorRangeX(x);
 			if (fs1)
 			{
 				double count;
@@ -130,11 +130,11 @@ namespace Task5
 
 				int i = 0;
 				if (x < X[0])
-					throw exception::ErrorRangeX(x);
+					throw Myexception::ErrorRangeX(x);
 				while (x > X[i])
 				{
 					if (i == 20)
-						throw exception::ErrorRangeX(x);
+						throw Myexception::ErrorRangeX(x);
 					i++;
 				}
 
@@ -149,7 +149,7 @@ namespace Task5
 			fstream fs2(file2);
 			double r = 0;
 			if (x < -10 || x > 10)
-				throw exception::ErrorRangeX(x);
+				throw Myexception::ErrorRangeX(x);
 			if (fs2)
 			{
 				double count;
@@ -181,11 +181,11 @@ namespace Task5
 
 				int i = 0;
 				if (x < X[0])
-					throw exception::ErrorRangeX(x);
+					throw Myexception::ErrorRangeX(x);
 				while (x > X[i])
 				{
 					if (i == 20)
-						throw exception::ErrorRangeX(x);
+						throw Myexception::ErrorRangeX(x);
 					i++;
 				}
 
@@ -314,11 +314,11 @@ namespace Task5
 
 				int i = 0;
 				if (x < X[0])
-					throw exception::ErrorRangeX(x);
+					throw Myexception::ErrorRangeX(x);
 				while (x > X[i])
 				{
 					if (i == 20)
-						throw exception::ErrorRangeX(x);
+						throw Myexception::ErrorRangeX(x);
 					i++;
 				}
 
@@ -368,11 +368,11 @@ namespace Task5
 
 				int i = 0;
 				if (x < X[0])
-					throw exception::ErrorRangeX(x);
+					throw Myexception::ErrorRangeX(x);
 				while (x > X[i])
 				{
 					if (i == 21)
-						throw exception::ErrorRangeX(x);
+						throw Myexception::ErrorRangeX(x);
 					i++;
 				}
 
@@ -456,7 +456,7 @@ namespace Task5
 
 
 using namespace Task5;
-using namespace exception;
+using namespace Myexception;
 
 int main()
 {
@@ -464,17 +464,22 @@ int main()
 	{
 		fstream fs1(Task5::file1, ios::in);
 		if (!fs1)
-			throw Task5::exception::ErrorNoFile(Task5::file1);
+			throw Task5::Myexception::ErrorNoFile(Task5::file1);
 		fstream fs2(Task5::file2, ios::in);
 		if (!fs2)
-			throw Task5::exception::ErrorNoFile(Task5::file2);
+			throw Task5::Myexception::ErrorNoFile(Task5::file2);
 		fstream fs3(Task5::file3, ios::in);
 		if (!fs3)
-			throw Task5::exception::ErrorNoFile(Task5::file3);
+			throw Task5::Myexception::ErrorNoFile(Task5::file3);
 	}
-	catch (const Task5::exception::ErrorNoFile& e)
+	catch (const Task5::Myexception::ErrorNoFile& e)
 	{
 		e.Message();
+	}
+	catch (...)
+	{
+
+
 	}
 
 	while (true)
@@ -490,7 +495,7 @@ int main()
 			double v = algoritm1::gold(x, y, z);
 			cout << algoritm1::func(u, v, text);
 		}
-		catch (const Task5::exception::ErrorRangeX& e)
+		catch (const Task5::Myexception::ErrorRangeX& e)
 		{
 			e.Message();
 		}
